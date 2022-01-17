@@ -1,9 +1,5 @@
 ![image with grid of buttons](https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/basicui.jpg?raw=true) -->
 
-<p float="left">
-	<img src="https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/assets/basicui.jpg" width="313" height="343"/>
-</p>
-
 # Created for the testing and setup of Jan Scientific Microscopes
 
 Designed a basic operating GUI for the Jan Scientific microscope for internal testing and root cause analysis in the office. The program used pySerial for serial communication with the microscope.
