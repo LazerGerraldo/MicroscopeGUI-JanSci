@@ -1,3 +1,9 @@
+<!-- ![image with grid of buttons](https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/basicui.jpg?raw=true) -->
+
+<p float="left">
+	<img src="https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/assets/basicui.jpg" width="313" height="343"/>
+</p>
+
 # Created for the testing and setup of Jan Scientific Microscopes
 
 Designed a basic operating GUI for the Jan Scientific microscope for internal testing and root cause analysis in the office. The program used pySerial for serial communication with the microscope.
@@ -5,6 +11,8 @@ Designed a basic operating GUI for the Jan Scientific microscope for internal te
 Internal axis information is stored to ensure that motors are not burnt out while operating. 
 
 ### Future Update
+Make sure the baud rate and port selectors are available and working
+
 In a upcoming update it would be handy to have a program that programs motor controllers when specified a port and motor axis to program. 
 
 ## File Descriptions and Explanations
@@ -17,7 +25,7 @@ serialscan.py scans all computers serial ports and returns a list of available s
 
 
 ## Installation
-need to run the following command to install pySerial.
+need to run the following command to install pySerial. 
 ```
 python -m pip install pyserial
 ```
