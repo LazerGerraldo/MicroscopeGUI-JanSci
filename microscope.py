@@ -7,7 +7,7 @@ baud = 38400        # baud rate, default 38400 for microscope
 ser = 0             # serial connection assigned during startup()
 waittime = 12       # loop time for movement of motors, based on Z axis homing from max
 
-axisinfo = [['X', 77000],['Y',40000],['Z',30000], # array of all acceptable axis IDs and the axis max step values
+axisinfo = [['X', 75000],['Y',40000],['Z',30000], # array of all acceptable axis IDs and the axis max step values
 ['O', 400000],['L',500],['P',500]]           # TODO update for L, P
 
 # opens serial connection at the input port using global baudrate
@@ -50,7 +50,7 @@ def axisstepcheck(id, stepcount):
     print('requested axis ID of ' + id + ' not found')
     return False
 
-# move axis with axis ID should be single letter X, Y, Z, O, L, P and step distance less thatn 35,000
+# move axis with axis ID should be single letter X, Y, Z, O, L, P and step distance less than 35,000
 def moveAxis(id, step):
     global waittime
     if axisstepcheck(id, step): # if the axis ID exists move the axis step steps
@@ -60,10 +60,10 @@ def moveAxis(id, step):
         ser.write(movestr)
         time.sleep(4)
 
-        if '' in ser.read_all().decode("utf-8"):# check if the movement was completed successfully
+        if '' in ser.read_all().decode("utf-8"):# Successful movement produces no messages to serial com
             print('completed movement')
 
-        else:
+        else: # unsuccessful movement throws an error
             print('movement was unable to complete')
 
     else:
@@ -94,11 +94,11 @@ def homeAxis(id):
 
 def internalTest():
     # ------------------------------ testing microscope class --------------------------------
-    ser = startup('COM5') # needed for using any serial connections
+    startup('COM9') # needed for using any serial connections
 
     # test axisidcheck()
     # axisidcheck('Bill')
-    axisidcheck('X')
+    # axisidcheck('X')
 
     # test axisstepcheck()
     # axisstepcheck('Y', 500)
@@ -114,7 +114,7 @@ def internalTest():
     closedown() # closing serial connection
 
 def bobLoop():
-    ser = startup('COM6')
+    ser = startup('COM9')
     x = 1
     while(1):
         homeAxis('Z')
@@ -128,4 +128,4 @@ def bobLoop():
     closedown()
 
 # bobLoop()
-# internalTest()
+internalTest()

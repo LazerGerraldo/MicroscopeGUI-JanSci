@@ -1,11 +1,11 @@
-from guizero import App, Text, PushButton, MenuBar
-import time
+from audioop import mul
+from guizero import App, Text, PushButton
 import microscope
 import serialscan
 
-port = 'COM5'   # may need to manualy assign a COM port after looking in device manager
-baud = 38400    # baud rate, default 38400 for microscope
-count = 0       # keep track of number of loops
+port = 'COM8'   # may need to manually assign a COM port after looking in device manager
+
+comlist = serialscan.serial_ports()
 
 microscope.startup(port)
 # microscope.homeAxis('Z')
@@ -18,7 +18,7 @@ def homeAxis(id):
     microscope.homeAxis(id)
     # microscope.homeAxis('Z')
 
-# home button commmands
+# home button commands
 def homeX():
     homeAxis('X')
 def homeY():
@@ -60,26 +60,20 @@ def downL():
 def downP():
     moveAxis('P', 1000)
 
-
 defmes = 'Press Button to Move'
 
 app = App(title='Microscope Control V1', layout='grid')
 
+def com_port_change(val):
+    print('Changing COM Port to ' + val)
+    microscope.startup(val)
 
+# listbox = ListBox(app, items=['COM0', 'COM1'], selected=port, command=com_port_change, multiselect=False, align='right')
 
 def com_port_function():
-    print("COM port menu button pressed")
-    
-def edit_function():
-    print("******************Baud Rate (Changing)********************************")
- 
-
-menubar = MenuBar(app,
-                  toplevel=["Serial Port", "Baud Rate"],
-                  options=[
-                      [ ["COM3", com_port_function], ["COM5", com_port_function], ["Re Scan Serial Ports", com_port_function] ],
-                      [ ["Does not work", edit_function], ["9600", edit_function], ["86400", edit_function] ]
-                  ])
+    print("-------Re-Scanning Serial Ports---------")
+    comlist = serialscan.serial_ports()
+    app.display()
 
 #axis identifiers
 xcol = Text(app, text="x", grid=[0,0])
