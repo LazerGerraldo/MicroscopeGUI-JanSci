@@ -1,4 +1,4 @@
-![image with grid of buttons](https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/basicui.jpg?raw=true)
+![image with grid of buttons](https://github.com/LazerGerraldo/MicroscopeGUI-JanSci/blob/master/basicui.jpg?raw=true) -->
 
 # Created for the testing and setup of Jan Scientific Microscopes
 
